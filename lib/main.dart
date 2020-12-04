@@ -57,7 +57,8 @@ class _MyAppState extends State<MyApp> {
                   decoration: BoxDecoration(
                       border: Border.all(color: Colors.blueAccent)),
                   child: InAppWebView(
-                    initialUrl: "./app.html",
+                    // initialUrl: "https://flutter.dev/",
+                    initialUrl: "assets/app.html",
                     initialHeaders: {},
                     initialOptions: InAppWebViewGroupOptions(
                         crossPlatform: InAppWebViewOptions(
@@ -80,7 +81,7 @@ class _MyAppState extends State<MyApp> {
                       controller
                           .evaluateJavascript(source: 'app.js')
                           .then((value) {
-                        print(value);
+                        print('RESULTADO: $value');
                       });
                       // print('RESULTADO: $number');
                     },
