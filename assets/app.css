@@ -1,0 +1,10 @@
+#mid {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 300 auto;
+    color: red;
+    font-size: large;
+}

@@ -71,7 +71,7 @@ class _MyAppState extends State<MyApp> {
         <h1>JavaScript Handlers (Channels) TEST</h1>
         <script>
             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-                window.flutter_inappwebview.callHandler('theHandler')
+                window.flutter_inappwebview.callHandler('handlerFoo')
                   .then(function(result) {
                     // print to the console the data coming
                     // from the Flutter side.
@@ -121,11 +121,11 @@ class _MyAppState extends State<MyApp> {
                       setState(() {
                         this.url = url;
                       });
-                      // valor = await controller
-                      //     .evaluateJavascript(source: 'assets/app.js')
-                      //     .timeout(Duration(milliseconds: 1000));
+                      valor = await controller
+                          .evaluateJavascript(source: 'assets/app.js')
+                          .timeout(Duration(milliseconds: 1000));
                       controller
-                          .evaluateJavascript(source: 'app.js')
+                          .evaluateJavascript(source: 'alert("HEY DUDE")')
                           .then((value) {
                         print('RESULTADO: $value and $valor');
                       });
