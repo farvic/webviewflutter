@@ -80,8 +80,7 @@ class _MyAppState extends State<MyApp> {
                       webView.addJavaScriptHandler(
                           handlerName: 'handlerFooWithArgs',
                           callback: (args) {
-                            // print("Blergh: ${args[3]['foo']}");
-                            print("fooWithArgs: $args");
+                            print("Blergh: $args");
                             // it will print: [1, true, [bar, 5], {foo: baz}, {bar: bar_value, baz: baz_value}]
                           });
                     },

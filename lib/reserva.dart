@@ -60,31 +60,31 @@ class _MyAppState extends State<MyApp> {
                   child: InAppWebView(
                     // initialUrl: "https://flutter.dev/",
                     initialFile: "assets/test.html",
-                    initialData: InAppWebViewInitialData(data: """
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    </head>
-    <body>
-        <h1>JavaScript Handlers (Channels) TEST</h1>
-        <script>
-            window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
-                window.flutter_inappwebview.callHandler('handlerFoo')
-                  .then(function(result) {
-                    // print to the console the data coming
-                    // from the Flutter side.
-                    console.log(JSON.stringify(result));
+//                     initialData: InAppWebViewInitialData(data: """
+// <!DOCTYPE html>
+// <html lang="en">
+//     <head>
+//         <meta charset="UTF-8">
+//         <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+//     </head>
+//     <body>
+//         <h1>JavaScript Handlers (Channels) TEST</h1>
+//         <script>
+//             window.addEventListener("flutterInAppWebViewPlatformReady", function(event) {
+//                 window.flutter_inappwebview.callHandler('theHandler')
+//                   .then(function(result) {
+//                     // print to the console the data coming
+//                     // from the Flutter side.
+//                     console.log(JSON.stringify(result));
 
-                    window.flutter_inappwebview
-                      .callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'}, result);
-                });
-            });
-        </script>
-    </body>
-</html>
-                  """),
+//                     window.flutter_inappwebview
+//                       .callHandler('handlerFooWithArgs', 1, true, ['bar', 5], {foo: 'baz'}, result);
+//                 });
+//             });
+//         </script>
+//     </body>
+// </html>
+//                   """),
                     initialHeaders: {},
                     initialOptions: InAppWebViewGroupOptions(
                         crossPlatform: InAppWebViewOptions(
@@ -121,11 +121,11 @@ class _MyAppState extends State<MyApp> {
                       setState(() {
                         this.url = url;
                       });
-                      valor = await controller
-                          .evaluateJavascript(source: 'assets/app.js')
-                          .timeout(Duration(milliseconds: 1000));
+                      // valor = await controller
+                      //     .evaluateJavascript(source: 'assets/app.js')
+                      //     .timeout(Duration(milliseconds: 1000));
                       controller
-                          .evaluateJavascript(source: 'alert("HEY DUDE")')
+                          .evaluateJavascript(source: 'app.js')
                           .then((value) {
                         print('RESULTADO: $value and $valor');
                       });
