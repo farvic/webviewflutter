@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:webview/headless_webview.dart';
 
 import './headless.dart';
 
@@ -15,6 +16,29 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
+
+  int number = 0;
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      routes: {
+        HeadlessWebView.routeName: (context) => HeadlessWebView(),
+      },
+      home: Home(),
+    );
+  }
+}
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => new _HomeState();
+}
+class _HomeState extends State<Home>{
   InAppWebViewController webView;
   String url = "";
   double progress = 0;
@@ -25,18 +49,11 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-  }
-
-  int number = 0;
-  @override
   Widget build(BuildContext context) {
     int valor = 0;
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
-          title: const Text('InAppWebView Example'),
+          title: const Text('Webview'),
         ),
         body: Container(
           child: Column(
@@ -80,7 +97,7 @@ class _MyAppState extends State<MyApp> {
                       webView.addJavaScriptHandler(
                           handlerName: 'handlerFooWithArgs',
                           callback: (args) {
-                            // print("Blergh: ${args[3]['foo']}");
+                            print("Blergh: ${args[3]['foo']}");
                             print("fooWithArgs: $args");
                             // it will print: [1, true, [bar, 5], {foo: baz}, {bar: bar_value, baz: baz_value}]
                           });
@@ -149,12 +166,12 @@ test();''').then((value) {
                       }
                     },
                   ),
+                  RaisedButton(onPressed: () => Navigator.of(context).pushNamed(HeadlessWebView.routeName), child: Icon(Icons.arrow_downward),)
                 ],
               ),
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
